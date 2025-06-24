@@ -165,6 +165,13 @@ Import it into Postman using:
 
 ---
 
+## 💬 GPT Chat Reference
+
+Chat link used while building:  
+👉 https://chatgpt.com/c/685963cf-8ba4-8005-8aca-e08b216b4e34
+
+---
+
 ## 📄 License
 
 This project is for educational and demo purposes.  
