@@ -1,36 +1,176 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# B2C Booking API
 
-First, run the development server:
+A secure, scalable, API-only backend for a B2C travel platform built using **Next.js**, **MongoDB**, **JWT**, and **OpenAI**.  
+This backend powers features like user authentication, bookings, traveller profiles, and AI-generated summaries.
+
+---
+
+## ✈️ Features
+
+- 🔐 User signup & login with **JWT-based auth**
+- 👤 Authenticated **user profile** (GET/PUT)
+- 🎫 Manage **bookings** (create, list by status)
+- 🧍 Manage **travellers** (add, update, delete)
+- 🧠 Generate **booking summaries using OpenAI**
+- ✅ Fully tested with Postman
+
+---
+
+## 🛠 Tech Stack
+
+- **Next.js API Routes** (No frontend)
+- **MongoDB** (cloud)
+- **JWT** for authentication
+- **Bcrypt** for password hashing
+- **OpenAI API v4** for AI summaries
+- **Postman** for API testing
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/b2c-booking-api.git
+cd b2c-booking-api
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env.local` file in the root with:
+
+```env
+MONGODB_URI=your-mongodb-uri
+JWT_SECRET=your-jwt-secret
+JWT_REFRESH_SECRET=your-refresh-token-secret
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Then restart your server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🧪 Postman API Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Use the provided `postman_collection.json` file to test all routes.
 
-## Learn More
+### Required Headers for Protected Routes:
 
-To learn more about Next.js, take a look at the following resources:
+```http
+Authorization: Bearer <accessToken>
+Content-Type: application/json
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📚 API Endpoints
 
-## Deploy on Vercel
+### 🔐 Auth
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Method | Endpoint              | Description              |
+|--------|------------------------|--------------------------|
+| POST   | `/api/auth/signup`    | Register a new user      |
+| POST   | `/api/auth/login`     | Login + get JWT tokens   |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 👤 User Profile
+
+| Method | Endpoint           | Description            |
+|--------|---------------------|------------------------|
+| GET    | `/api/user/profile` | Get user info          |
+| PUT    | `/api/user/profile` | Update name/password   |
+
+### 🎫 Bookings
+
+| Method | Endpoint                             | Description                  |
+|--------|---------------------------------------|------------------------------|
+| POST   | `/api/bookings`                      | Create a new booking         |
+| GET    | `/api/bookings?status=upcoming`      | Upcoming bookings            |
+| GET    | `/api/bookings?status=completed`     | Completed bookings           |
+| POST   | `/api/bookings/:id/summary`          | AI summary for a booking     |
+
+### 🧍 Travellers
+
+| Method | Endpoint                             | Description              |
+|--------|---------------------------------------|--------------------------|
+| POST   | `/api/travellers`                    | Add new traveller        |
+| PUT    | `/api/travellers/:traveller_id`      | Update traveller         |
+| DELETE | `/api/travellers/:traveller_id`      | Delete traveller         |
+
+---
+
+## 📂 Folder Structure
+
+```
+b2c-booking-api/
+│
+├── pages/
+│   └── api/
+│       ├── auth/
+│       │   ├── signup.js
+│       │   └── login.js
+│       ├── user/
+│       │   └── profile.js
+│       ├── bookings/
+│       │   ├── index.js
+│       │   └── [id]/
+│       │       └── summary.js
+│       └── travellers/
+│           ├── index.js
+│           └── [traveller_id].js
+│
+├── lib/
+│   └── mongodb.js
+│
+├── middleware/
+│   └── verifyToken.js
+│
+├── models/
+│   ├── User.js
+│   └── Order.js
+│
+├── .env.local
+├── postman_collection.json
+├── README.md
+└── package.json
+```
+
+---
+
+---
+
+## 📦 Postman Collection
+
+You’ll find a full `postman_collection.json` in the root folder. It includes:
+
+- All endpoint requests
+- Headers setup
+- Sample body payloads
+- Token auth flows
+
+Import it into Postman using:  
+**File > Import > Upload `postman_collection.json`**
+
+---
+
+## 📄 License
+
+This project is for educational and demo purposes.  
+Feel free to use, modify, and expand on it.
+
+---
+
+## 🙌 Author
+
+Built with ❤️ for the B2C Booking Platform.
