@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "21157566-eda5-45e3-9ec5-d103616f1e8e",
+		"name": "B2C Ticket Booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23658465"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"full_name\": \"Hari Teco\",\n  \"email\": \"hari@example.com\",\n  \"password\": \"securepass123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"hari@example.com\",\n  \"password\": \"securepass123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzUwNjk2OTc1LCJleHAiOjE3NTA2OTc4NzV9.X72BRUtZ39xnSYWaiH7P7FkRfgp2Top0n2DJVNRjFyg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/user/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put_profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzUwNjk2OTc1LCJleHAiOjE3NTA2OTc4NzV9.X72BRUtZ39xnSYWaiH7P7FkRfgp2Top0n2DJVNRjFyg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"full_name\": \"Updated Name\",\n  \"password\": \"newpass123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "booking-status-upcoming",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcmlAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTA3MDI5NTUsImV4cCI6MTc1MDcwMzg1NX0.9HzP7Di7RKM85dqL4YBjUNXuU36mTYZ8ToetfsHeGv8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/bookings?status=upcoming",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"bookings"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "upcoming"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_bookings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcmlAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTA3MDI5NTUsImV4cCI6MTc1MDcwMzg1NX0.9HzP7Di7RKM85dqL4YBjUNXuU36mTYZ8ToetfsHeGv8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/bookings?status=completed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"bookings"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "completed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_bookings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcmlAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTA3MDI5NTUsImV4cCI6MTc1MDcwMzg1NX0.9HzP7Di7RKM85dqL4YBjUNXuU36mTYZ8ToetfsHeGv8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"destination\": \"Dubai\",\n  \"departure_city\": \"Delhi\",\n  \"start_date\": \"2025-06-10\",\n  \"end_date\": \"2025-06-26\",\n  \"highlights\": [\"Hotel\", \"Flight\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "openai-summary",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcmlAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTA3MDI5NTUsImV4cCI6MTc1MDcwMzg1NX0.9HzP7Di7RKM85dqL4YBjUNXuU36mTYZ8ToetfsHeGv8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/bookings/68599b99405e95f1317a78d8/summary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"bookings",
+						"68599b99405e95f1317a78d8",
+						"summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_travellers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphY2tAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTA3MDEyMjMsImV4cCI6MTc1MDcwMjEyM30.ZeKwbnAE4NxgiPp4Bj5JUIGjTUUB8Eb2I0t4CrC5bus",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"full_name\": \"Rocky Merchant\",\n  \"age\": 36,\n  \"passport_number\": \"M12345674\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/travellers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"travellers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put_travellers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphY2tAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTA2OTk4OTUsImV4cCI6MTc1MDcwMDc5NX0.izu1jBejUvaLso_A-noz2chGomsaC1RLlauT2dSJIiY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"full_name\": \"Payal Merchant\",\n  \"age\": 34,\n  \"passport_number\": \"M12345678\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/travellers/6859902e02fd2a05fce7cf9b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"travellers",
+						"6859902e02fd2a05fce7cf9b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_travellers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphY2tAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTA3MDEyMjMsImV4cCI6MTc1MDcwMjEyM30.ZeKwbnAE4NxgiPp4Bj5JUIGjTUUB8Eb2I0t4CrC5bus",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/travellers/6859902e02fd2a05fce7cf9b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"travellers",
+						"6859902e02fd2a05fce7cf9b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
